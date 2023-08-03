@@ -1,8 +1,9 @@
 import { CollectionConfig } from 'payload/types';
-import Version from './Version';
+import _Slugs from './_Slugs';
+import { findChildren } from '../hooks/Relationships';
 
 const Branch: CollectionConfig = {
-  slug: 'branch',
+  slug: _Slugs.Branch,
   admin: {
     useAsTitle: 'name',
   },
@@ -18,10 +19,19 @@ const Branch: CollectionConfig = {
         type : "richText",
     },
     {
+        name : "ressource",
+        type : "relationship",
+        hasMany : false,
+        relationTo : _Slugs.Resource
+    },
+    {
         name : "versions",
         type : "relationship",
         hasMany : true,
-        relationTo : Version.slug
+        relationTo : _Slugs.Version,
+        hooks : {
+            afterRead : [(args) => findChildren(_Slugs.Branch, _Slugs.Version, "branch", args)]
+        }
       }
   ],
 }

@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import _Slugs from './_Slugs';
 
 const Version: CollectionConfig = {
   slug: 'version',
@@ -6,6 +7,12 @@ const Version: CollectionConfig = {
     useAsTitle: 'someField',
   },
   fields: [
+    {
+        name : "branch",
+        type : "relationship",
+        relationTo : _Slugs.Branch,
+        hasMany : false
+    },
     {
       name: 'primary',
       type: "number",
@@ -26,6 +33,11 @@ const Version: CollectionConfig = {
           "step" : 1
         }
       },
+    {
+        name : "releasenotes",
+        type : "textarea"
+    }
+
   ],
 }
 

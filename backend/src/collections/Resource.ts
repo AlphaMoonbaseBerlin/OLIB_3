@@ -1,8 +1,9 @@
 import { CollectionConfig } from 'payload/types';
-import Branch from './Branch';
+
+import _Slugs from './_Slugs';
 
 const Resource: CollectionConfig = {
-  slug: 'resource',
+  slug: _Slugs.Resource,
   admin: {
     useAsTitle: 'name',
   },
@@ -26,7 +27,7 @@ const Resource: CollectionConfig = {
       name : "branches",
       type : "relationship",
       hasMany : true,
-      relationTo : Branch.slug
+      relationTo : _Slugs.Branch
     }
   ],
 }
