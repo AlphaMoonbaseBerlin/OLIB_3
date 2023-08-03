@@ -1,0 +1,2 @@
+for development run
+docker compose -f docker-compose-dev.yml -p olib3-backend up -d
