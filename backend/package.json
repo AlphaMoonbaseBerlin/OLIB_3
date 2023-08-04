@@ -16,16 +16,17 @@
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema"
   },
   "dependencies": {
-    "payload": "^1.11.8",
+    "@boomworks/payload-plugin-author-fields": "^1.1.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "cross-env": "^7.0.3"
+    "payload": "^1.11.8"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
+    "copyfiles": "^2.4.1",
     "nodemon": "^2.0.6",
     "ts-node": "^9.1.1",
-    "copyfiles": "^2.4.1",
     "typescript": "^4.8.4"
   }
 }

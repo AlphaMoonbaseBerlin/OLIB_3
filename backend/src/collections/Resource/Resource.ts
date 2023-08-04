@@ -1,12 +1,15 @@
 import { CollectionConfig } from 'payload/types';
 
 import _Slugs from './_Slugs';
+import { defaultModeratorOrOwner } from '../../Access/rules';
+
 
 const Resource: CollectionConfig = {
   slug: _Slugs.Resource,
   admin: {
     useAsTitle: 'name',
   },
+  access : defaultModeratorOrOwner(),
   fields: [
     {
       name: 'name',
@@ -22,12 +25,6 @@ const Resource: CollectionConfig = {
         type : "select",
         options : ["Component", "Snippet", "Plugin", "Notch"],
         required : true
-    },
-    {
-      name : "branches",
-      type : "relationship",
-      hasMany : true,
-      relationTo : _Slugs.Branch
     }
   ],
 }

@@ -1,17 +1,27 @@
 import { CollectionConfig } from 'payload/types';
+import { manyToOne } from '../../hooks/OneWayRealtionships';
+import Branch from './Branch';
 import _Slugs from './_Slugs';
+import TDVErsion from '../TDVersion';
+import { defaultModeratorOrOwner } from '../../Access/rules';
 
 const Version: CollectionConfig = {
-  slug: 'version',
+  slug: _Slugs.Version,
   admin: {
     useAsTitle: 'someField',
   },
+  upload : {
+    mimeTypes : ["aplication/tox", "application/dll", "application/dfx"],
+  },
+  access : defaultModeratorOrOwner(),
   fields: [
+    manyToOne(_Slugs.Version, Branch),
     {
-        name : "branch",
-        type : "relationship",
-        relationTo : _Slugs.Branch,
-        hasMany : false
+      name : "tdversion",
+      type : "relationship",
+      relationTo : TDVErsion.slug,
+      hasMany : false,
+      required : true
     },
     {
       name: 'primary',
@@ -21,7 +31,8 @@ const Version: CollectionConfig = {
       defaultValue : 0,
       admin : {
         "step" : 1
-      }
+      },
+      required : true
     },
     {
         name: 'secondary',
@@ -31,7 +42,8 @@ const Version: CollectionConfig = {
         defaultValue : 0,
         admin : {
           "step" : 1
-        }
+        },
+        required : true
       },
     {
         name : "releasenotes",

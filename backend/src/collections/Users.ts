@@ -1,10 +1,18 @@
 import { CollectionConfig } from 'payload/types';
+import { isAdmin, isItself, publicVisible } from '../Access/rules';
+import { or } from '../Access/utils';
 
 const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
   admin: {
     useAsTitle: 'email',
+  },
+  access: {
+    create : isAdmin,
+    update : (args) => or(args,  [isAdmin, isItself]),
+    delete : (args) => or(args,  [isAdmin, isItself]),
+    read   : publicVisible
   },
   fields: [
     {
@@ -16,6 +24,7 @@ const Users: CollectionConfig = {
       type : "select",
       options : ["Admin", "Moderator", "Uploader", "Viewer"],
       defaultValue : "Viewer",
+      saveToJWT : true,
       admin : {
         isClearable : false
       }
