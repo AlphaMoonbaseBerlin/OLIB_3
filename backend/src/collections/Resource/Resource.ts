@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 
-import _Slugs from './_Slugs';
+import _Slugs from '../_Slugs';
 import { defaultModeratorOrOwner } from '../../Access/rules';
 
 
@@ -19,6 +19,10 @@ const Resource: CollectionConfig = {
     {
         name : "snippet",
         type : "text"
+    },
+    {
+      name :  "description",
+      type : "richText"
     },
     {
         name : "style",

@@ -4,7 +4,6 @@ import path from 'path';
 import Users from './collections/Users';
 import Resource from './collections/Resource/Resource';
 import Version from './collections/Resource/Version';
-import Branch from './collections/Resource/Branch';
 import TDVErsion from './collections/TDVersion';
 import { addAuthorFields } from '@boomworks/payload-plugin-author-fields';
 
@@ -16,7 +15,6 @@ export default buildConfig({
   collections: [
     Users,
     Resource,
-    Branch,
     Version,
     TDVErsion
     // Add Collections here

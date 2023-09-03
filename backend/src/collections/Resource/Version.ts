@@ -1,9 +1,9 @@
 import { CollectionConfig } from 'payload/types';
 import { manyToOne } from '../../hooks/OneWayRealtionships';
-import Branch from './Branch';
-import _Slugs from './_Slugs';
+import _Slugs from '../_Slugs';
 import TDVErsion from '../TDVersion';
 import { defaultModeratorOrOwner } from '../../Access/rules';
+import Resource from './Resource';
 
 const Version: CollectionConfig = {
   slug: _Slugs.Version,
@@ -15,7 +15,7 @@ const Version: CollectionConfig = {
   },
   access : defaultModeratorOrOwner(),
   fields: [
-    manyToOne(_Slugs.Version, Branch),
+    manyToOne(_Slugs.Version, Resource),
     {
       name : "tdversion",
       type : "relationship",
@@ -45,6 +45,10 @@ const Version: CollectionConfig = {
         },
         required : true
       },
+    {
+      name : "tag",
+      type : "text"
+    },
     {
         name : "releasenotes",
         type : "textarea"

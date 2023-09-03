@@ -13,7 +13,7 @@ export function or(args: AccessArgs, rules:Array<Access>):any {
     }
     if ( potential_queries.length) {
         return {
-            "or" : potential_queries
+                "or" : potential_queries
         }
     }
     return false

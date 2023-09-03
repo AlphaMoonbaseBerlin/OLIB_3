@@ -14,12 +14,12 @@ export function isUploader( { req: {user}}) {
 
 export function isOwner({req : {user}}) {
     return {
-        createdBy : { equals : user.id}
+        createdBy : { equals : user.id }
     }
 }
 export function isItself({req : {user}}) {
     return {
-        id : { equals : user.id}
+        id : { equals : user.id } 
     }
 }
 
